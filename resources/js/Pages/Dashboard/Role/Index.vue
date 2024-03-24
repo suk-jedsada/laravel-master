@@ -18,7 +18,12 @@
     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
     <th class="text-center">{{ role.id }}</th>
     <td class="px-6 py-4">
-        {{ role.name }}
+        <div class="flex items-center gap-2">
+    <div class="w-20 h-20 overflow-hidden rounded-full">
+        <img :src="role.image">
+    </div>
+    <p> {{ role.name }}</p>
+</div>
     </td>
     <td class="flex gap-2 px-6 py-4">
     <Link :href="route('dashboard.roles.edit',role.id)" class="w-16 btn btn-primary btn-sm">

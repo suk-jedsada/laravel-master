@@ -26,5 +26,11 @@ class RoleSeeder extends Seeder
             'name' =>'manager'
 
         ]);
+
+        $roles = Role::all();
+        foreach ($roles as $role) {
+            $role->addMedia(storage_path('seed/role-image.jpg'))->preservingOriginal()
+                ->toMediaCollection(Role::MEDIA_COLLECTION_IMAGE);
+        }
     }
 }
