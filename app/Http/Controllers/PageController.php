@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\User;
+use App\Models\Role;
 
 class PageController extends Controller
 {
@@ -54,4 +55,9 @@ class PageController extends Controller
 //        $user = User::where('email', $request->email)->first();
 //        dd($request->all());
 //    }
+public function edit(Role $role)
+{
+    dd($role);
+}
+
 }

@@ -3,11 +3,22 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Dashboard\AnnouncementController;
+use App\Http\Controllers\RoleController;
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('dashboard')->as('dashboard.')->group(function () {
         Route::get('/', [PageController::class, 'dashboard'])->name('index');
+
+
+
+        //Role
+        Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
+        Route::get('/roles/{role}/edit', [RoleController::class, 'edit'])->name('roles.edit');
+        Route::get('/roles/{role}/create', [RoleController::class, 'create'])->name('roles.create');
+        Route::patch('/roles/{role}', [RoleController::class, 'update'])->name('roles.update');
+
+        //Announcement
 
         Route::get('/announcements', [AnnouncementController::class, 'index'])
             ->name('announcements.index');
