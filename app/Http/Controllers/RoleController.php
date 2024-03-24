@@ -29,4 +29,48 @@ class RoleController extends Controller
         $role->save();
         return redirect()->route('dashboard.roles.index');
     }
+    public function create()
+    {
+        // dd('sddsd');
+        return Inertia::render('Dashboard/Role/Create')->with([
+
+        ]);
+
+    }
+    public function store(Request $request)
+    {
+        // dd($request->all());
+
+        $req = $request->validate([
+            'name' => ['required']
+        ]);
+        Role::create([
+            'name'=>$req['name']
+        ]);
+        return redirect()->route('dashboard.roles.index');
+
+
+    }
+    public function destroy(Role $role,)
+    {
+        // dd($request->all());
+
+// dd($role);
+      $role->delete();
+      return redirect()->route('dashboard.roles.index')->with('success', 'role deleted successfuly.');
+
+
+    }
+    // public function store(Request $request)
+    // {
+    //     // dd($request->all());
+
+    //     $req = $request->only('name');
+    //     Role::create([
+    //         'name'=>$req['name']
+    //     ]);
+    //     return redirect()->route('dashboard.roles.index');
+
+
+    // }
 }

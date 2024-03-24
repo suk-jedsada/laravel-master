@@ -24,13 +24,10 @@ import Layout from "@/Pages/Dashboard/Layout/Layout.vue";
 import {useForm} from "@inertiajs/inertia-vue3";
 
 export default {
-    name: "RoleEdit",
+    name: "RoleCreate",
     components: {Layout},
     props: {
-        role: {
-            type: Object,
-            required: true
-        }
+
     },
     mounted() {
 
@@ -44,8 +41,8 @@ export default {
     },
     methods: {
         submit() {
-            const url = this.route('dashboard.roles.update', this.role.id);
-            this.form.patch(url);
+            const url = this.route('dashboard.roles.store');
+            this.form.post(url);
         }
     }
 };

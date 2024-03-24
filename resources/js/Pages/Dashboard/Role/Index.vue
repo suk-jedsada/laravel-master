@@ -1,6 +1,10 @@
 <template>
     <Layout>
+        <Link :href="route('dashboard.roles.create')" class="btn btn-primary">
+    CREATE
+</Link>
         <div class="relative mt-4 overflow-x-auto shadow-md sm:rounded-lg">
+
     <table class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
         <thead class="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -16,11 +20,15 @@
     <td class="px-6 py-4">
         {{ role.name }}
     </td>
-    <td class="px-6 py-4">
-        <Link :href="route('dashboard.roles.edit',role.id)" class="w-16 btn btn-primary btn-sm">
-            EDIT
-        </Link>
-    </td>
+    <td class="flex gap-2 px-6 py-4">
+    <Link :href="route('dashboard.roles.edit',role.id)" class="w-16 btn btn-primary btn-sm">
+        EDIT
+    </Link>
+    <button class="w-16 text-gray-100 uppercase btn btn-error btn-sm" type="button"
+        @click="handleDelete(role)">
+        DELETE
+    </button>
+</td>
 </tr>
         </tbody>
     </table>
@@ -49,7 +57,22 @@ export default {
     data() {
         return {};
     },
-    methods: {},
+    methods: {
+        handleDelete(role) {
+    this.$swal.fire({
+        title: "คุณต้องการที่จะลบ role " + role.name + '?',
+        showDenyButton: true,
+        showCancelButton: true,
+        showConfirmButton: false,
+        denyButtonText: 'ยืนยันการลบ'
+    }).then((result) => {
+        if (result.isDenied) {
+            Inertia.delete(this.route('dashboard.roles.destroy', role.id));
+            window.location.reload();
+        }
+    });
+}
+    },
     watch: {}
 };
 </script>

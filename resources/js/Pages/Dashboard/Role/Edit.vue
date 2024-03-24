@@ -12,6 +12,7 @@
                 </label>
                 <div class="flex justify-end">
                     <button class="mt-2 uppercase btn btn-primary btn-sm" type="submit">Submit</button>
+
                 </div>
             </div>
         </form>
