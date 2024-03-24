@@ -31,6 +31,10 @@ class RoleSeeder extends Seeder
         foreach ($roles as $role) {
             $role->addMedia(storage_path('seed/role-image.jpg'))->preservingOriginal()
                 ->toMediaCollection(Role::MEDIA_COLLECTION_IMAGE);
+            $role->addMedia(storage_path('seed/role-image.jpg'))->preservingOriginal()
+                ->toMediaCollection(Role::MEDIA_COLLECTION_IMAGE);
+            $role->addMedia(storage_path('seed/role-image.jpg'))->preservingOriginal()
+                ->toMediaCollection(Role::MEDIA_COLLECTION_IMAGE);
         }
     }
 }
